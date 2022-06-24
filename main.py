@@ -59,13 +59,13 @@ while True:
                 send("Информация о ip адресе. \n Пример команды: \n ip 127.0.0.1 ")
                 
                 
-            if "+" in text:
+            elif "+" in text:
                 print(text)
                 send("Обработка...")
                 phoneget(text)
                 
                 
-            if "ip" in text:
+            elif "ip" in text:
                 text = text.replace('ip ','')
                 print(text)
                 ipget(text)
