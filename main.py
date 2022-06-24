@@ -35,7 +35,7 @@ def ipget(getIP):
     except:
         send( "IP не найден!" )
     send( "Обработка...")
-    send("Сбор информации")
+    send("Вывод:")
     infoList = json.load(getInfo)
     send(f"IP: {infoList['ip']} \n City: {infoList['city']} \n Region: {infoList['region']} \n Country: {infoList['country']} \n Hostname: {infoList['hostname']} ")
     
