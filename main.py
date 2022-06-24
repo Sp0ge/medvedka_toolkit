@@ -55,20 +55,19 @@ while True:
             if text == 'начать':
                 send('Функции:')
                 #send('Спам \n информация о номере \n Пример команды: \n спам +7********* ')
-                send("Информация о номере. \n Пример команды: \n tel 7********* ")
+                send("Информация о номере. \n Пример команды: \n +7********* ")
                 send("Информация о ip адресе. \n Пример команды: \n ip 127.0.0.1 ")
                 
                 
-            if "tel" in text:
-                text.replace("tel ",'')
-                if '+' not in text:
-                    text = "+" + text
+            if "+" in text:
+                print(text)
                 send("Обработка...")
                 phoneget(text)
                 
                 
             if "ip" in text:
                 text = text.replace('ip ','')
+                print(text)
                 ipget(text)
     except Exception as E:
         time.sleep(1)
