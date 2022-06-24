@@ -69,5 +69,7 @@ while True:
                 text = text.replace('ip ','')
                 print(text)
                 ipget(text)
+            else:
+                send("Неверная команда!")
     except Exception as E:
         time.sleep(1)
