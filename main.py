@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
-from tkinter import W
-from func.spam import spam
 import time
-import phonenumbers
 import vk_api
-import random, whois
+import random
 import urllib.request, json
 from config import *
 

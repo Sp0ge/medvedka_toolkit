@@ -1,0 +1,4 @@
+phonenumbers
+vk_api
+urllib.request
+json
