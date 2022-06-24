@@ -18,8 +18,8 @@ def send(answer):
 def phoneget(phone):
     getInfo = "https://htmlweb.ru/geo/api.php?json&telcod=" + phone
     try:
-        send("телефон найден")
         infoPhone = urllib.request.urlopen( getInfo )
+        send("телефон найден")
     except:
         send("телефон не найден")
     infoPhone = json.load(infoPhone)
@@ -61,6 +61,8 @@ while True:
                 
             if "tel" in text:
                 text.replace("tel ",'')
+                if '+' not in text:
+                    text = "+" + text
                 send("Обработка...")
                 phoneget(text)
                 
