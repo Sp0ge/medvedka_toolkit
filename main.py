@@ -33,7 +33,7 @@ def phoneget(phone):
     try:
         infoPhone = urllib.request.urlopen( getInfo )
         send("телефон найден")
-    except:
+    except Exception:
         send("телефон не найден")
     infoPhone = json.load(infoPhone)
     send(f'Номер сотового: {phone} \n Страна: {infoPhone["country"]["name"]} \n Регион: {infoPhone["region"]["name"]} \n Округ: {infoPhone["region"]["okrug"]} \n Оператор: {infoPhone["0"]["oper"]} \n Часть света: {infoPhone["country"]["location"]}')
@@ -45,7 +45,7 @@ def ipget(getIP):
     try:
         getInfo = urllib.request.urlopen( url )
         send( "IP найден!" )
-    except:
+    except Exception:
         send( "IP не найден!" )
     send( "Обработка...")
     send("Вывод:")
@@ -58,10 +58,11 @@ def cs(username):
     for site in uls:
         try:
             resp = requests.get(site)
-            if str(resp.status_code) == "200":
-                send(str(site))
-        except:
+        except Exception:
             print('error')
+        if str(resp.status_code) == "200":
+            send(str(site))
+            print(str(site))
 
 
 vk = vk_api.VkApi(token=TOKEN)
@@ -74,9 +75,10 @@ while True:
             text = messages["items"][0]["last_message"]["text"]
             text = text.lower()
             
-            if text == 'начать':
+            if text == 'начать' or text == "help":
                 send('Функции:')
                 #send('Спам \n информация о номере \n Пример команды: \n спам +7********* ')
+                send("Показать комманды - help")
                 send("Информация о номере. \n Пример команды: \n +7********* ")
                 send("Информация о ip адресе. \n Пример команды: \n ip 0.0.0.0 ")
                 send("Поиск по соцсетям. \n Пример команды: \n social mishka324 ")
@@ -86,17 +88,20 @@ while True:
                 print(text)
                 send("Обработка...")
                 phoneget(text)
+                send('Конец данных.')
                 
                 
             elif "ip" in text:
                 text = text.replace('ip ','')
                 print(text)
                 ipget(text)
+                send('Конец данных.')
                 
             elif "social" in text:
                 text = text.replace('social ','')
                 username = text
                 cs(username)
+                send('Конец данных.')
 
                 
             else:
