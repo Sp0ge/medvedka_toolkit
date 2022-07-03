@@ -57,7 +57,7 @@ def cs(username):
     print("Проверка...")
     for site in uls:
         try:
-            resp = requests.get(site)
+            resp = requests.get(site,timeout=2)
         except Exception:
             print('error')
         if str(resp.status_code) == "200":
